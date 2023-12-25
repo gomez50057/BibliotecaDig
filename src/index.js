@@ -2,7 +2,6 @@
 import React, { useState, useMemo, useRef } from "react";
 import { createRoot } from 'react-dom/client';
 
-
 /* Muuri-react */
 import { MuuriComponent, AutoScroller, useData } from "muuri-react";
 /* Utils & components */
@@ -11,11 +10,17 @@ import { datosBibliotecaDigital, useFilter } from "./utils";
 /* Style */
 import "./style.css";
 
+
+
+import WOW from 'wow.js';
+import 'animate.css/animate.min.css';
+
+const wow = new WOW();
+wow.init();
+
+
 const rootElement = document.getElementById('app');
 const root = createRoot(rootElement);
-
-// const cardInfoOptions = datosBibliotecaDigital.cardInfo.map(option => option === "year" ? "Año" : option);
-
 
 // App.
 const App = () => {
@@ -43,7 +48,7 @@ const App = () => {
           name={bookCard.name}
           descriptionBook={bookCard.descriptionBook}
           types={bookCard.types}
-          year={bookCard.year}
+          año={bookCard.año}
           pdfSrc={bookCard.pdfSrc}
           booksIndex={bookCard.booksIndex}
         />
@@ -119,11 +124,11 @@ const App = () => {
 };
 
 const BookCard = props => {
-  const { types, year, name } = props;
+  const { types, año, name } = props;
   // Combina los tipos en un solo string (si hay dos tipos)
   const type = `${types[0]} ${types[1] || ""}`;
   // Estos datos se utilizarán para ordenar y filtrar.
-  useData({ name, type, year });
+  useData({ name, type, año });
   // Renderiza el componente `CardContent` y pasa todas las propiedades a este componente hijo
   return <CardContent {...props} />;
 };

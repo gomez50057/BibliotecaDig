@@ -12,8 +12,8 @@ export const Demo = ({ children }) => (
 
 // Header component.
 export const Header = ({ children }) => (
-  <div className="controls">
-    <div className="containerSubTiDoc">
+  <div className="documents">
+    <div className="containerSubTiDoc wow animate__animated animate__fadeInBottomRight">
       <img src="../img/titulop.png" alt="Descripción de la primera imagen" style={{ marginRight: '20px', width: '30px', height: '30px' }} />
       <h2 className="subtitulo">DOCUMENTOS</h2>
       <img src="../img/titulop.png" alt="Descripción de la segunda imagen" style={{ marginLeft: '20px', width: '30px', height: '30px' }} />
@@ -33,12 +33,10 @@ export const BackgroundHome = ({ children }) => {
   };
 
   return (
-    <section className="home"
-      style={{
-        backgroundImage: `url(../img/homeDigital.png)`,
-        paddingLeft: "20px",
-      }}
-    >
+    <section className="home">
+       <video autoPlay loop muted playsInline className="background-video">
+        <source src="../img/homeDigital.mp4" type="video/mp4" />
+      </video>
       <div className="logotipo">
         <img src="../img/Logotipo.png" alt="Logo de la empresa" />
       </div>
@@ -114,19 +112,18 @@ export const AboutUs = forwardRef(({ children }, ref) => {
   }, [isVisible, duration]);
   return (
     <section id="aboutUs" ref={ref} className="AboutUs">
-      <div className="AboutUsIMG">
-        <img src="../img/leyendo.png" alt="Logo de la empresa" />
+      <div className="AboutUsIMG wow animate__animated animate__zoomIn">
+        <img src="img/leyendo.png" alt="Logo de la empresa" />
       </div>
       <div className="AboutUstxt">
-        <p className="homeh3"> <span>Bienvenido a la Biblioteca Digital de Planeación</span> , herramienta pública para el almacenamiento y consulta de los documentos, programas, planes, informes, estudios, artículos, análisis, guías y demás instrumentos en los que participa la Unidad de Planeación y Prospectiva del Gobierno del Estado de Hidalgo.
+        <p className="homeh3 wow animate__animated animate__fadeInRightBig"><span>Bienvenido a la Biblioteca Digital de Planeación</span>, herramienta pública para el almacenamiento y consulta de los documentos, programas, planes, informes, estudios, artículos, análisis, guías y demás instrumentos en los que participa la Unidad de Planeación y Prospectiva del Gobierno del Estado de Hidalgo.
         </p>
-        <p>Este espacio virtual tiene como objetivo ser una herramienta útil para la población, en donde de manera ágil y sencilla pueden consultar y descargar los materiales que les resulten útiles.
+        <p className="wow animate__animated animate__fadeInRightBig">Este espacio virtual tiene como objetivo ser una herramienta útil para la población, en donde de manera ágil y sencilla pueden consultar y descargar los materiales que les resulten útiles.
         </p>
-        <p><span>Con la Biblioteca Digital de Planeación, contribuimos a llevar a Hidalgo a su máximo potencial.</span>    </p>
-        <div className="contadorlibros">
-          <p>{count}</p>
-          <p>Total de publicaciones</p>
-          <img src="../img/librosTotal.png" alt="Logo de la empresa" />
+        <p className="wow animate__animated animate__fadeInRightBig"><span>Con la Biblioteca Digital de Planeación, contribuimos a llevar a Hidalgo a su máximo potencial.</span>    </p>
+        <div className="contadorlibros wow animate__animated animate__zoomInUp">
+          <img src="img/librosTotal.png" alt="Logo de la empresa" />
+          <p>{count} <span>Publicaciones</span></p>
         </div>
       </div>
       {children}
@@ -134,10 +131,11 @@ export const AboutUs = forwardRef(({ children }, ref) => {
   );
 });
 
+
 // Featured component.
 export const Featured = ({ children }) => (
-  <section className="featured" style={{ backgroundImage: `url(../img/back.png)`, }}>
-    <div className="containerSubTi">
+  <section className="featured" style={{ backgroundImage: `url(..//img/back.png)`, }}>
+    <div className="containerSubTi wow animate__animated animate__fadeInBottomLeft">
       <img src="../img/titulop.png" alt="Descripción de la primera imagen" style={{ marginRight: '20px', width: '30px', height: '30px' }} />
       <h2 className="subtitulo"> PUBLICACIONES DESTACADAS</h2>
       <img src="../img/titulop.png" alt="Descripción de la segunda imagen" style={{ marginLeft: '20px', width: '30px', height: '30px' }} />
@@ -145,19 +143,19 @@ export const Featured = ({ children }) => (
     {/* Contenedor de 4 elementos */}
     <div className="containerFeatured">
       {/* Contenedor 1 */}
-      <div className="item">
+      <div className="item wow animate__animated animate__slideInDown">
         <img src="../img/primer.png" alt="Item 1" />
       </div>
       {/* Contenedor 2 */}
-      <div className="item">
+      <div className="item wow animate__animated animate__slideInUp">
         <img src="../img/primer.png" alt="Item 2" />
       </div>
       {/* Contenedor 3 */}
-      <div className="item">
+      <div className="item wow animate__animated animate__slideInDown">
         <img src="../img/primer.png" alt="Item 3" />
       </div>
       {/* Contenedor 4 */}
-      <div className="item">
+      <div className="item wow animate__animated animate__slideInUp">
         <img src="../img/primer.png" alt="Item 4" />
       </div>
     </div>
@@ -258,7 +256,7 @@ const Modal = ({ children, isOpen, onClose, booksData }) => {
   }
   // const { types, name, year, description, descriptionBook, imgSrc } = booksData;
 
-  const { types, name, year, descriptionBook, pdfSrc } = booksData;
+  const { types, name, año, descriptionBook, pdfSrc } = booksData;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -266,7 +264,7 @@ const Modal = ({ children, isOpen, onClose, booksData }) => {
         {/* <img src={imgSrc} alt={`Imagen de ${name}`} /> */}
         <h2>{name}</h2>
         <p>{descriptionBook}</p>
-        <p>Año de Publicación: {year}</p>
+        <p>Año de Publicación: {año}</p>
         <p>Categoría: {types.join(', ')}</p>
         <a href={pdfSrc} download target="_blank" className="cta">
           <span>Descargar PDF</span>
@@ -295,7 +293,7 @@ const Modal = ({ children, isOpen, onClose, booksData }) => {
 
 // Card content.
 export const CardContent = React.memo(
-  ({ types, name, year, descriptionBook, pdfSrc }) => {
+  ({ types, name, año, descriptionBook, pdfSrc }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const truncatedName = name.length > 40 ? `${name.slice(0, 40)}...` : name;
@@ -303,7 +301,7 @@ export const CardContent = React.memo(
     const booksData = {
       types,
       name,
-      year,
+      año,
       descriptionBook,
       pdfSrc,
     };
@@ -343,7 +341,7 @@ export const CardContent = React.memo(
             </h3></Tooltip>
 
             <span className="book-card__pokedex-year">
-              <span>{year}</span>
+              <span>{año}</span>
               <svg className="right">
                 <use xlinkHref="#icon-rounded-slim-tri-bottom-right">
                   <svg
